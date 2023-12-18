@@ -1,2 +1,2 @@
-# dice_typeSCript
+# dice_typeScript
 typeScript
