@@ -1,4 +1,6 @@
-"use strict";
+const button = document.querySelector("button");
+const thrownDice = document.querySelector("#dice");
+let dots;
 let throws = 0, currentGoal = 1;
 const dice = {
     sides: 6,
@@ -6,21 +8,21 @@ const dice = {
         return Math.ceil(Math.random() * this.sides);
     },
 };
-document.querySelector("button").addEventListener("click", () => {
+button.addEventListener("click", () => {
     let result = dice.throw();
-    document.querySelector("#dice").classList = "";
-    document.querySelector("#dice").classList.add("dice", `dots-${result}`);
+    thrownDice.classList.remove(...thrownDice.classList);
+    thrownDice.classList.add("dice", `dots-${result}`);
     throws++;
-    document.querySelector("button").innerHTML = `Kasta ( ${throws} )`;
+    button.innerHTML = `Kasta ( ${throws} )`;
     console.log(`You threw a ${result}.`);
     if (result === currentGoal && currentGoal < 6) {
         console.log("nice, increasing goal!");
-        document.querySelector(`.dots-${result}`).classList.remove("faded");
+        dots = document.querySelector(`.dots-${result}`).classList.remove("faded");
         currentGoal++;
     }
     else if (result === currentGoal && currentGoal === 6) {
         console.log(`You rolled a ladder in ${throws} throws.`);
-        document.querySelector(`.dots-${result}`).classList.remove("faded");
+        dots = document.querySelector(`.dots-${result}`).classList.remove("faded");
         setTimeout(() => {
             alert(`You rolled a ladder in ${throws} throws.`);
             console.log("resetting game....");
