@@ -1,3 +1,5 @@
+//Adding to make sure everything is up to date
+
 const button = document.querySelector("button") as HTMLButtonElement;
 const thrownDice = document.querySelector("#dice") as HTMLElement;
 
